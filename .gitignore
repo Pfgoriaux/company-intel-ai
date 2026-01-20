@@ -1,0 +1,71 @@
+# =================================
+# Company Intel AI - Git Ignore
+# =================================
+
+# ---------------------------------
+# Environment & Secrets
+# ---------------------------------
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets/
+credentials/
+
+# ---------------------------------
+# Dependencies
+# ---------------------------------
+node_modules/
+package-lock.json
+
+# ---------------------------------
+# Build & Output
+# ---------------------------------
+dist/
+build/
+out/
+*.log
+logs/
+
+# ---------------------------------
+# OS Files
+# ---------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# ---------------------------------
+# IDE & Editor
+# ---------------------------------
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+
+# ---------------------------------
+# Testing & Coverage
+# ---------------------------------
+coverage/
+.nyc_output/
+*.lcov
+
+# ---------------------------------
+# Temporary Files
+# ---------------------------------
+tmp/
+temp/
+*.tmp
+*.temp
+.cache/
+
+# ---------------------------------
+# Browser Data
+# ---------------------------------
+# Patchright/Playwright browser data
+playwright-report/
+test-results/

@@ -1,0 +1,29 @@
+{
+  "name": "company-intel-ai",
+  "version": "1.0.0",
+  "description": "AI-powered company intelligence extraction - pricing, customers, value proposition, and more",
+  "main": "src/index.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.mjs",
+    "dev": "node --watch src/index.mjs"
+  },
+  "keywords": [
+    "scraper",
+    "ai",
+    "company-intel",
+    "pricing",
+    "competitors"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.33.0",
+    "cheerio": "^1.1.2",
+    "dotenv": "^16.4.5",
+    "express": "^5.1.0",
+    "https-proxy-agent": "^7.0.6",
+    "openai": "^4.76.0",
+    "patchright": "^1.57.0",
+    "user-agents": "^1.1.669"
+  }
+}
