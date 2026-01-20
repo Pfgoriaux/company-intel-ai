@@ -38,7 +38,7 @@ AI-powered company intelligence extraction. Analyze any website to automatically
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/yourusername/company-intel-ai.git
+git clone https://github.com/Pfgoriaux/company-intel-ai.git
 cd company-intel-ai
 
 # Install dependencies
@@ -272,6 +272,26 @@ company-intel-ai/
 └── README.md
 ```
 
+## Industry Classification
+
+The AI automatically classifies each company into one of 27 industry categories:
+
+| Category | Category | Category |
+|----------|----------|----------|
+| DeepTech | Climate | Industry |
+| AI | Biotechnology | Robotic |
+| Crypto / Blockchain / Web3 | Gaming / Esports | FinTech |
+| EdTech | FoodTech | HealthTech |
+| MarTech / AdTech | PropTech | LegalTech |
+| Cybersecurity | SpaceTech | Logistics / Supply Chain |
+| Immersive Tech (AR/VR) | Mobility | PetTech |
+| E-commerce | Retail | Advanced Materials / Nanotech |
+| AgriTech | Longevity / Biohacking | DefenseTech |
+
+If none of these fit, it returns `"Other"`.
+
+The classification is based on the company's products, services, and value proposition extracted from the website content.
+
 ## How It Works
 
 ```
@@ -296,7 +316,9 @@ company-intel-ai/
 6. Merge & return results
 ```
 
-## Docker Deployment
+## Deployment
+
+### Local Docker
 
 ```bash
 # Build
@@ -309,20 +331,50 @@ docker run -p 3002:3002 \
   company-intel-ai
 ```
 
-Or with docker-compose:
+### Deploy with Coolify on Hetzner (Recommended)
 
-```yaml
-version: '3.8'
-services:
-  company-intel:
-    build: .
-    ports:
-      - "3002:3002"
-    environment:
-      - AI_PROVIDER=claude
-      - CLAUDE_API_KEY=${CLAUDE_API_KEY}
-      - BROWSER_HEADLESS=true
+[Coolify](https://coolify.io/) is an open-source, self-hostable Heroku/Vercel alternative. Combined with [Hetzner](https://www.hetzner.com/) servers, it's a cost-effective way to deploy this project.
+
+#### 1. Get a Hetzner Server
+
+1. Create an account at [Hetzner Cloud](https://console.hetzner.cloud/)
+2. Create a new project and add a server:
+   - **Type**: CPX21 (3 vCPU, 4GB RAM) or higher recommended
+   - **Image**: Ubuntu 22.04
+   - **Location**: Choose nearest to your users
+3. Note your server's IP address
+
+#### 2. Install Coolify
+
+SSH into your server and run:
+
+```bash
+curl -fsSL https://cdn.coollabs.io/coolify/install.sh | bash
 ```
+
+Once installed, access Coolify at `http://your-server-ip:8000` and complete the setup.
+
+#### 3. Deploy This Project
+
+1. In Coolify, click **"New Resource"** → **"Public Repository"**
+2. Enter: `https://github.com/Pfgoriaux/company-intel-ai`
+3. Select **"Dockerfile"** as build pack
+4. Configure environment variables:
+   - `AI_PROVIDER`: `claude`
+   - `CLAUDE_API_KEY`: your API key
+   - `BROWSER_HEADLESS`: `true`
+5. Set port to `3002`
+6. Click **Deploy**
+
+Coolify will build the Docker image and deploy it automatically.
+
+#### Useful Resources
+
+| Resource | Description |
+|----------|-------------|
+| [Hetzner Cloud](https://www.hetzner.com/cloud) | Affordable cloud servers (from ~$4/month) |
+| [Coolify Docs](https://coolify.io/docs) | Self-hosting platform documentation |
+| [Coolify GitHub](https://github.com/coollabsio/coolify) | Open-source, self-hostable PaaS |
 
 ## Cost Optimization
 
