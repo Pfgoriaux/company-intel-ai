@@ -1,7 +1,7 @@
 # Company Intel AI - Dockerfile
 # Uses Xvfb for headful Chrome in container
 
-FROM node:18-slim
+FROM node:20-slim
 
 # Install Chrome and Xvfb
 RUN apt-get update && apt-get install -y \
@@ -34,5 +34,5 @@ ENV DISPLAY=:99
 # Expose port
 EXPOSE 3002
 
-# Start Xvfb and the app
-CMD Xvfb :99 -screen 0 1920x1080x24 -ac & sleep 1 && node src/index.mjs
+# Clean up any stale Xvfb locks and start
+CMD rm -f /tmp/.X99-lock && Xvfb :99 -screen 0 1920x1080x24 -ac & sleep 1 && node src/index.mjs

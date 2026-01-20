@@ -32,7 +32,7 @@ AI-powered company intelligence extraction. Analyze any website to automatically
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 20+
 - An API key from [Claude](https://console.anthropic.com/) or [OpenAI](https://platform.openai.com/api-keys)
 
 ### 1. Clone & Install
